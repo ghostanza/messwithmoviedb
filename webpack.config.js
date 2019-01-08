@@ -80,6 +80,7 @@ module.exports = config;
 
 if(process.env.NODE_ENV === 'production'){
   module.exports.devtool = 'source-map';
+  module.exports.mode = 'production';
   module.exports.plugins.push(
       new webpack.DefinePlugin({
         'process.env' : {
@@ -94,4 +95,6 @@ if(process.env.NODE_ENV === 'production'){
       }),
       new OptimizeCSSAssets()
   )
+}else{
+  module.exports.mode = 'development';
 }
