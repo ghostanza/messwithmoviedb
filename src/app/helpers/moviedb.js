@@ -5,6 +5,11 @@ const axios = require('axios'),
 
 class MDB{
   constructor(){
+    /**** CONFIGURATION VALUES
+    ** these values are hardcoded from the /configuration endpoint
+    ** rather than make network calls every time to get these,
+    ** I'm hardcoding them. Last updated on 01/07/2018.
+    ** If images start getting 404's, check to make sure these values are still accurate */
     this.config = {
       "images": {
         "base_url": "http://image.tmdb.org/t/p/",
@@ -103,11 +108,7 @@ class MDB{
       ]
     }
   }
-  /**** CONFIGURATION VALUES
-  ** these values are hardcoded from the /configuration endpoint
-  ** rather than make network calls every time to get these,
-  ** I'm hardcoding them. Last updated on 01/07/2018.
-  ** If images start getting 404's, check to make sure these values are still accurate */
+
   getGenreList(type='movie'){
     if(type && (type == 'movie' || type == 'tv')){
         return axios.get(`${baseURL}/genre/${type}/list?api_key=${key}`);
